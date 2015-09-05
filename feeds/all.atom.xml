@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Curious Guy</title><link href="https://HtwoO.github.io/" rel="alternate"></link><link href="https://HtwoO.github.io/feeds/all.atom.xml" rel="self"></link><id>https://HtwoO.github.io/</id><updated>2015-09-05T00:00:00+08:00</updated><entry><title>Maya Compiler Requirement</title><link href="https://HtwoO.github.io/maya-compiler-requirement.html" rel="alternate"></link><updated>2015-08-29T00:00:00+08:00</updated><author><name>Fonzie</name></author><id>tag:HtwoO.github.io,2015-08-18:maya-compiler-requirement.html</id><summary type="html">&lt;p&gt;Below is compiler requirement for plugin development for the three latest version of Autodesk Maya.&lt;/p&gt;
+&lt;p&gt;Compiler requirement for Maya 2016&lt;/p&gt;
+&lt;p&gt;Linux: gcc 4.4.7, RHEL(CentOS) 6.5, DTS(Developer Toolset) 2.1&lt;/p&gt;
+&lt;p&gt;Mac OS X: Mavericks 10.9.5, Xcode 6.1.1, SDK 10.9, clang with libstdc++&lt;/p&gt;
+&lt;p&gt;Windows: Visual Studio 2012 update 4&lt;/p&gt;
+&lt;p&gt;For Maya 2015&lt;/p&gt;
+&lt;p&gt;Linux: gcc 4.1.2, RHEL(CentOS) 6.2, Fedora 14&lt;/p&gt;
+&lt;p&gt;Mac OS X: Mountain Lion 10.8.5, Xcode 5.0.2, SDK 10.8, clang with libstdc++&lt;/p&gt;
+&lt;p&gt;Windows: Visual Studio 2012 update 4&lt;/p&gt;
+&lt;p&gt;For Maya 2014&lt;/p&gt;
+&lt;p&gt;Linux: gcc 4.1.2, RHEL(CentOS) 6.0, Fedora 14&lt;/p&gt;
+&lt;p&gt;Mac OS X: Snow Leopard 10.6.8, Xcode 3.2.1, gcc 4.2.1&lt;/p&gt;
+&lt;p&gt;Windows: Visual Studio 2010 SP1&lt;/p&gt;
+</summary><category term="CGI"></category><category term="Maya"></category></entry><entry><title>Linux 命令行压缩解压</title><link href="https://HtwoO.github.io/linux-cli-archiving-unarchiving.html" rel="alternate"></link><updated>2015-09-05T00:00:00+08:00</updated><author><name>Fonzie</name></author><id>tag:HtwoO.github.io,2015-01-03:linux-cli-archiving-unarchiving.html</id><summary type="html">&lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h2&gt;压缩解压 zip 归档（压缩包）&lt;/h2&gt;
+&lt;p&gt;由于 rar 有许可证问题，在给使用 Windows 的朋友发送归档文件的时候，我习惯使用 zip 格式。归档有几个方便的用途：打包多个文件和保持文件的时间戳，并有确保文件完整的作用，能解压的文件，通常是完整的，而如果文件不完整，往往归档坏了，就解压不了了。&lt;/p&gt;
+&lt;p&gt;在 Debian、Mint 或 Ubuntu 上安装 zip 压缩和解压工具，需要管理员权限：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;# apt-get update
+# apt-get install zip unzip
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;或者：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo apt-get update &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo apt-get install zip unzip
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;以下是一些常见用法的示例：&lt;/h3&gt;
+&lt;p&gt;把 archive 目录里的文件打包到名为 archive.zip 的归档里，归档的名字可不带 zip 后缀：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;zip archive.zip archive/
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;把 archive 目录里的文件和所有子目录打包到名为 archive.zip 的归档里：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;zip -r archive.zip archive/
+zip --recurse-paths archive.zip archive/
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;解压 package.zip 文件到当前目录：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;unzip package.zip
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;检测归档文件完整性，并输出概要信息：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;zip -T package.zip
+zip --test package.zip  # 和以上命令等效
+unzip -tq package.zip
+unzip -t -q package.zip # 和以上命令等效
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;解压 package.zip 到 newdir 目录：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;unzip package.zip -d newdir/
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;列出 package.zip 里的文件列表：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;unzip -l package.zip
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;从归档里解压出名为 README.md 的文件：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;unzip package.zip README.md
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;其他用法：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;zip -e log.zip *.log    # 使用密码加密归档，会在命令行执行后提示输入
+zip -c log.zip *.log    # 加单行注释，会在命令行执行后提示输入
+zip -z log.zip *.log    # 加多行注释，会在命令行执行后提示输入，Ctrl + D 结束输入
+unzip -z log.zip        # 显示注释
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;更高级的用法，请查看命令 zip -h、unzip -h，或手册页 man zip、man unzip。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;其他常见 Linux 归档格式&lt;/h2&gt;
+&lt;h3&gt;tar.gz、tar.xz、tar.bz2&lt;/h3&gt;
+&lt;p&gt;Linux 上的 tar.gz、tgz、tar.xz、tar.bz2 等多种归档格式，基本上都可以用 &lt;code&gt;tar&lt;/code&gt; 来解压，这是几乎每个现代的 Linux 操作系统都有的工具。写本文的时候，Debian 8 里的 tar 版本是 1.27.1，支持 gz、bz2 和 xz 等归档格式。&lt;/p&gt;
+&lt;p&gt;打包为 tar.gz、tgz、tar.xz、tar.bz2、tbz2，（参数连在一起时？连接符「-」可省略）：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;tar -czvf mail.tar.gz Mail/
+tar czvf mail.tgz Mail/
+tar -cJvf mail.tar.xz Mail/
+tar -cjvf log.tar.bz2 *.log
+tar --create -j -v -f log.tbz2 *.log
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;解压 tar.gz、tar.xz、tar.bz2 归档：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;tar -xzvf log.tar.gz
+tar -xjvf log.tar.bz2
+tar -xJvf log.tar.xz
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;列出归档里的内容：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;tar -tjvf log.tar.bz2
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;tar 的参数比较多，但可以用以下方法记忆，先指定操作模式，再指定要操作的归档格式，后面加上 &lt;code&gt;vf&lt;/code&gt; 输出操作过程详细信息，单加 &lt;code&gt;f&lt;/code&gt; 不显示操作过程的输出信息。&lt;/p&gt;
+&lt;p&gt;可选的操作模式，必须选择其中一项，前面是选项的简写方式，后面是选项完整写法：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;-A, --catenate, --concatenate   追加 tar 文件至归档
+-c, --create               创建一个新归档
+-d, --diff, --compare      找出归档和文件系统的差异
+    --delete               从归档(非磁带！)中删除
+-r, --append               追加文件至归档结尾
+-t, --list                 列出归档内容
+    --test-label           测试归档卷标并退出
+-u, --update               仅追加比归档中副本更新的文件
+-x, --extract, --get       从归档中解出文件
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;需要操作的归档格式，选择和要操作的文件对应的选项，前面是选项的简写方式，后面是选项完整写法：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;-j, --bzip2                通过 bzip2 过滤归档
+-J, --xz                   通过 xz 过滤归档
+    --lzip                 通过 lzip 过滤归档
+    --lzma                 通过 xz 过滤归档
+    --lzop
+    --no-auto-compress     不使用归档后缀名来决定压缩程序
+-z, --gzip, --gunzip, --ungzip   通过 gzip 过滤归档
+-Z, --compress, --uncompress   通过 compress 过滤归档
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;压缩 gzip 或 bzip2：&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;gzip *.pdf
+bzip2 *.pdf
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;结果会给当前目录每个 pdf 文件生成一个 &lt;code&gt;.pdf.gz&lt;/code&gt; 或 &lt;code&gt;.pdf.bz2&lt;/code&gt;（使用 bzip2 时）的归档，并删除原始 pdf 文件。&lt;/p&gt;
+&lt;p&gt;解压缩 gz 或 bz2：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;gzip *.pdf.gz
+bzip2 *.pdf.bz2
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;结果会解压缩当前目录每个 &lt;code&gt;.pdf.gz&lt;/code&gt; 或 &lt;code&gt;.pdf.bz2&lt;/code&gt;（使用 bzip2 时）归档，并删除原归档文件。&lt;/p&gt;
+&lt;p&gt;列出 gz 归档里的文件：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;gzip -l foo.gz
+gzip --list foo.gz
+gunzip -l foo.gz
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;测试 gz 归档完整性：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;gzip -tv foo.gz
+gzip --test --verbose foo.gz # 以上命令的完整版本
+gunzip -tv foo.gz
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr /&gt;
+&lt;h2&gt;7z 和 rar 归档&lt;/h2&gt;
+&lt;p&gt;7z 因其较高的压缩率，在 Windows 平台用的也蛮多的。rar 也因为归档某类文件时比 zip 略高的压缩率，在开始推出时很多人用（鄙人也用过），但因为版权问题，建议尽量避免使用 rar 格式。这里列出它们的压缩解压方式，以便收到人家发的此类归档时不致无法使用。&lt;/p&gt;
+&lt;p&gt;Debian 系列发行版里解压 7z 归档，需要安装 &lt;code&gt;p7zip&lt;/code&gt; 软件包。要解压 rar 归档，需要先启用 non-free（非自由）软件仓库，然后安装 &lt;code&gt;unrar&lt;/code&gt; 软件包。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;apt-get update
+&lt;span class="nv"&gt;$ &lt;/span&gt;apt-get install p7zip unrar
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;常用处理 7z 归档命令：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;7zr a mail.7z Mail/ # 把 Mail 目录归档到 mail.7z
+7zr a log.7z *.log  # 把所有 log 后缀的文件归档到 log.7z
+7zr x foo.7z        # 解压归档，保留归档里的目录结构
+7zr l foo.7z        # 列出归档里的文件列表
+7zr d foo.7z bar    # 删除归档里文件名为 bar 的文件
+7zr t foo.7z        # 检测归档文件完整性
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;更复杂用法请查看 &lt;code&gt;7zr --help&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;常用处理 rar 归档命令：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;unrar x foo.rar             # 解压归档，保留归档里的目录结构
+unrar x foo.rar testdir/    # 解压到 testdir 目录
+unrar l foo.rar             # 列出归档里的文件列表
+unrar t foo.rar             # 检测归档文件完整性
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;更复杂用法请查看 &lt;code&gt;unrar --help&lt;/code&gt; 或 &lt;code&gt;unrar h&lt;/code&gt;。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2&gt;中文文件名乱码问题&lt;/h2&gt;
+&lt;p&gt;来自 Windows 系统的归档文件解压后，文件名可能会出现乱码，这时可以使用以下命令来尝试改名（转码），&lt;code&gt;-f&lt;/code&gt; 后是文件名的原始编码，&lt;code&gt;-t&lt;/code&gt; 后面指定的是要转换成的编码，&lt;code&gt;-r&lt;/code&gt; 表示递归处理所有子目录里的文件：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;convmv -f gbk -t utf8 -r dir/ # 预览改名效果
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;以上命令显示转码结果正确后，可加上 &lt;code&gt;--notest&lt;/code&gt; 选项可实际进行改名（转码）操作：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;convmv --notest -f gbk -t utf8 -r dir/
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;linux-wiki.cn 的文章示意：「千万不要在 NTFS 或 FAT 文件系统上执行 convmv，否则极可能产生意外结果」，个人没有注意过这个问题。&lt;/p&gt;
+&lt;h2&gt;参考资料&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;命令的帮助和手册页（manpage）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="http://linux-wiki.cn/wiki/中文文件名乱码问题"&gt;中文文件名乱码问题&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="http://linux-wiki.cn/wiki/压缩与解压"&gt;压缩与解压&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="http://www.cyberciti.biz/tips/how-can-i-zipping-and-unzipping-files-under-linux.html"&gt;Zipping and Unzipping Files under Linux&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="http://www.cyberciti.biz/howto/question/general/compress-file-unix-linux-cheat-sheet.php"&gt;Compressing files under Linux or UNIX cheat sheet&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</summary><category term="Linux"></category><category term="CLI"></category></entry><entry><title>dd 操作进度显示</title><link href="https://HtwoO.github.io/dd-progress-monitoring.html" rel="alternate"></link><updated>2015-09-05T00:00:00+08:00</updated><author><name>Fonzie</name></author><id>tag:HtwoO.github.io,2014-12-21:dd-progress-monitoring.html</id><summary type="html">&lt;p&gt;最近在帮朋友从 U 盘安装 Linux，这么好的推广自由软件的机会，怎么能放过。但在 Windows 尝试了 n 个方法之后，依然没能做出一个可作为安装介质的 U 盘，然后只能依靠好老（Good old）的 dd 咯。但使用 &lt;code&gt;dd&lt;/code&gt; 命令操作时，在命令完成以前，默认没有任何输出信息，看不到执行的进度，不太方便。那句话怎么说来着：&lt;a href="http://www.mutt.org/"&gt;"All mail clients suck. This one just sucks less."&lt;/a&gt;，这里应该说 All other tools suck. dd just suck less。在网上查找了一下怎么给 dd 加进度显示，让 dd 用户体验更好些。&lt;/p&gt;
+&lt;p&gt;这次我第二次需要这么做了，本着 DRY（Don't Repeat Yourself，不要重复学习）的原则，把方法记录在博客里，以防以后再次用到。&lt;/p&gt;
+&lt;p&gt;可以使用 &lt;code&gt;pv&lt;/code&gt;（Pipe Viewer）来查看 Unix &lt;a href="https://zh.wikipedia.org/zh/管道_(Unix)"&gt;管道&lt;/a&gt;的数据传输情况，把 dd 的输入输出部分分开。此方法需要系统里安装有 pv，然后执行如下命令：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;dd if=/dev/urandom | pv | dd of=/dev/null
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;输出类似：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;记录了131452+0 的读入MiB/s] [    &amp;lt;=&amp;gt;            ]
+记录了131452+0 的写出
+记录了131453+0 的读入
+记录了131452+0 的写出
+67303424字节(67 MB)已复制67303424字节(67 MB)已复 制，5.92668 秒，11.4 MB/秒
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;延伸一下，&lt;code&gt;pv&lt;/code&gt; 可以用于其他情况，比如查看校验码检测的进度：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;pv /home/user/bigfile.iso | md5sum
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;以下方法，可以在 dd 命令已经启动后，在一个新的终端里执行，dd 的操作进度会在原终端更新：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;sudo kill -USR1 $(pgrep ^dd)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;比如，执行：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;dd if=/dev/zero of=/dev/null count=10MB
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;输出如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;记录了9509217+0 的读入
+记录了9509216+0 的写出
+4868718592字节(4.9 GB)已复制，5.17436 秒，941 MB/秒
+记录了10000000+0 的读入
+记录了10000000+0 的写出
+5120000000字节(5.1 GB)已复制，5.44257 秒，941 MB/秒
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;还可以用 &lt;code&gt;watch&lt;/code&gt; 命令直接观察输出文件的大小变化：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;watch ls -l /pathtofile/filename
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;更华丽的办法是配合使用 &lt;code&gt;dialog&lt;/code&gt;，显示一个字符界面的进度条对话框：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;(pv -n /dev/sdx | dd of=/dev/sdy bs=128M conv=notrunc,noerror) 2&amp;gt;&amp;amp;1 | dialog --gauge &amp;quot;正在使用 dd 克隆，请稍候…&amp;quot; 10 70 0
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;参考文章：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="http://askubuntu.com/questions/215505/how-do-you-monitor-the-progress-of-dd"&gt;How do you monitor the progress of dd?&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="http://www.cyberciti.biz/faq/linux-unix-dd-command-show-progress-while-coping/"&gt;Linux dd Command Show Progress Copy Bar With Status&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</summary><category term="Linux"></category><category term="CLI"></category></entry></feed>
