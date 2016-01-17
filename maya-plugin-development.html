@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>    Maya Compiler Requirement - Unended Quest
+        <title>    Maya Plugin Development - Unended Quest
 </title>
         <meta charset="utf-8" />
         <link rel="stylesheet" href="/theme/css/normalize.css" />
@@ -14,7 +14,7 @@
             <div class="col-1-1 header">
                     <ul id="navigation">
                         <li><a href="/">Unended Quest</a></li>
-                            <li><a href="https://HtwoO.github.io/category/computer.html">computer</a></li>
+                            <li><a href="/category/computer.html">computer</a></li>
                     </ul>
             </div>
         </header>
@@ -22,11 +22,11 @@
         <div class="grid grid-pad">
             <section class="col-10-12" id="content">
     <div class="article">
-        <h1>Maya Compiler Requirement</h1>
+        <h1>Maya Plugin Development</h1>
         <small>发布于 2015.08.18，
-            分类：<a href="https://HtwoO.github.io/category/computer.html">computer</a></small>
-        <small>，Tag:</small>                <span class="tag"><a href="https://HtwoO.github.io/tag/cgi.html">CGI</a>,</span>
-                <span class="tag"><a href="https://HtwoO.github.io/tag/maya.html">Maya</a></span>
+            分类：<a href="/category/computer.html">computer</a></small>
+        <small>，Tag:</small>                <span class="tag"><a href="/tag/cgi.html">CGI</a>,</span>
+                <span class="tag"><a href="/tag/maya.html">Maya</a></span>
 
         <hr/>
 
@@ -50,6 +50,24 @@
 <li>Mac OS X: Snow Leopard 10.6.8, Xcode 3.2.1, gcc 4.2.1</li>
 <li>Windows: Visual Studio 2010 SP1</li>
 </ul>
+<p>Steps to setup Visual Studio 2010 Express edition to compile maya plugin.</p>
+<ol class="arabic simple">
+<li>Install vs2010 express.</li>
+<li>Confirm that there is no newer C++ redistribution/runtime than ones in WinSDK 7.1. If newer ones exists in the system, WinSDK 7.1 will fail when install.</li>
+<li>Confirm that there is no newer C++ redistribution/runtime than ones in WinSDK 7.1. If newer ones exists in the system, WinSDK 7.1 will fail when install.</li>
+<li>Install vs2010 sp1</li>
+<li>Install vs2010 patch <a class="reference external" href="https://support.microsoft.com/en-us/kb/2519277">VC-Compiler-KB2519277</a> (1).</li>
+</ol>
+<pre class="literal-block">
+Note(1) patch checksum:
+    File: VC-Compiler-KB2519277.exe
+    Size: 126887272 bytes
+    File Version: 10.0.40219.303
+    Modified: 2011.3.15, 12:53:07
+    MD5: 485B2C95B20961B031D2CE0A717461DD
+    SHA1: 0EF28CF05F9F6AD71167D99BE3446F267686F89B
+    CRC32: B0903D05
+</pre>
 
         </div>
 
@@ -60,16 +78,10 @@
 
                         <div class="widget cat">
                                 <div class="cat-link">
-                                    <a href="https://HtwoO.github.io/tag/maya.html">Maya</a>
+                                    <a href="/tag/maya.html">Maya</a>
                                 </div>
                                 <div class="cat-link">
-                                    <a href="https://HtwoO.github.io/tag/cgi.html">CGI</a>
-                                </div>
-                                <div class="cat-link">
-                                    <a href="https://HtwoO.github.io/tag/linux.html">Linux</a>
-                                </div>
-                                <div class="cat-link">
-                                    <a href="https://HtwoO.github.io/tag/cli.html">CLI</a>
+                                    <a href="/tag/cgi.html">CGI</a>
                                 </div>
                         </div>
 
@@ -81,7 +93,7 @@
         <footer>
             <div class="grid grid-pad">
                 <div class="col-1-1 footer">
-Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org/">Python</a>.                 </div>
+Powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org/">Python</a>.                 </div>
             </div>
         </footer>
     </body>
